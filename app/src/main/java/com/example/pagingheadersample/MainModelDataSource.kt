@@ -6,7 +6,7 @@ import androidx.paging.PageKeyedDataSource
 
 class MainModelDataSource(private val repository: Repository) : PageKeyedDataSource<Int, Item>() {
 
-    private lateinit var layout: List<ViewType>
+    private lateinit var layout: List<Item>
     private var totalPage = 0
     private var totalItemCount = 0
 
@@ -37,17 +37,15 @@ class MainModelDataSource(private val repository: Repository) : PageKeyedDataSou
             loadCallback?.onResult(emptyList(), null)
             loadInitialCallback?.onResult(emptyList(), 0, 0, null, null)
         } else {
-            val models = when (val viewType = layout[page]) {
-                is ViewType.HeaderViewType -> loadHeader(viewType.id, viewType.shopName)
-                is ViewType.BodyViewType -> loadBody(
-                    viewType.id,
-                    viewType.makerName,
-                    viewType.commodityName
-                )
+            val data = when (val item = layout[page]) {
+                is Header -> loadHeader(item.id, item.shopName)
+                is Body -> loadBody(item.id, item.makerName, item.commodityName)
+                else -> listOf(Body(0, "", ""))
             }
+
             totalItemCount += 1
-            loadInitialCallback?.onResult(models, 0, totalItemCount, null, nextPage)
-            loadCallback?.onResult(models, nextPage)
+            loadInitialCallback?.onResult(data, 0, totalItemCount, null, nextPage)
+            loadCallback?.onResult(data, nextPage)
         }
     }
 

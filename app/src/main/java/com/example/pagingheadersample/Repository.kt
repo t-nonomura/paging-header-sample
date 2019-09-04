@@ -4,40 +4,40 @@ package com.example.pagingheadersample
 interface Repository {
     fun getHeader(id: Int, shop: String): Header
     fun getBody(id: Int, maker: String, commodity: String): Body
-    fun getMain(): List<ViewType>
+    fun getMain(): List<Item>
 }
 
 class RepositoryImpl : Repository {
 
     private val list = listOf(
-        ViewType.HeaderViewType(0, "コンビニA"),
-        ViewType.BodyViewType(1, "A社", "ガム"),
-        ViewType.BodyViewType(2, "B社", "チョコレート"),
-        ViewType.BodyViewType(3, "C社", "クッキー"),
-        ViewType.HeaderViewType(4, "コンビニB"),
-        ViewType.BodyViewType(5, "D社", "おにぎり"),
-        ViewType.BodyViewType(6, "E社", "アイスコーヒー"),
-        ViewType.HeaderViewType(7, "コンビニC"),
-        ViewType.BodyViewType(8, "F社", "ミネラルウォーター"),
-        ViewType.BodyViewType(9, "G社", "飴"),
-        ViewType.BodyViewType(10, "H社", "オレンジジュース"),
-        ViewType.HeaderViewType(11, "コンビニD"),
-        ViewType.BodyViewType(12, "I社", "鮭おにぎり"),
-        ViewType.BodyViewType(13, "J社", "カフェオレ"),
-        ViewType.HeaderViewType(14, "スーパーE"),
-        ViewType.BodyViewType(15, "K社", "ポケットティッシュ"),
-        ViewType.BodyViewType(16, "L社", "ビスケット"),
-        ViewType.BodyViewType(17, "M社", "ポテトチップス"),
-        ViewType.HeaderViewType(18, "スーパーF"),
-        ViewType.BodyViewType(19, "N社", "梅おにぎり"),
-        ViewType.BodyViewType(20, "O社", "栄養ドリンク"),
-        ViewType.HeaderViewType(21, "スーパーG"),
-        ViewType.BodyViewType(22, "P社", "ブレスケア"),
-        ViewType.BodyViewType(23, "Q社", "煎餅"),
-        ViewType.BodyViewType(24, "R社", "アイスクリーム"),
-        ViewType.HeaderViewType(25, "スーパーH"),
-        ViewType.BodyViewType(26, "S社", "昆布おにぎり"),
-        ViewType.BodyViewType(27, "T社", "ビール")
+        Header(0, "コンビニA"),
+        Body(1, "A社", "ガム"),
+        Body(2, "B社", "チョコレート"),
+        Body(3, "C社", "クッキー"),
+        Header(4, "コンビニB"),
+        Body(5, "D社", "おにぎり"),
+        Body(6, "E社", "アイスコーヒー"),
+        Header(7, "コンビニC"),
+        Body(8, "F社", "ミネラルウォーター"),
+        Body(9, "G社", "飴"),
+        Body(10, "H社", "オレンジジュース"),
+        Header(11, "コンビニD"),
+        Body(12, "I社", "鮭おにぎり"),
+        Body(13, "J社", "カフェオレ"),
+        Header(14, "スーパーE"),
+        Body(15, "K社", "ポケットティッシュ"),
+        Body(16, "L社", "ビスケット"),
+        Body(17, "M社", "ポテトチップス"),
+        Header(18, "スーパーF"),
+        Body(19, "N社", "梅おにぎり"),
+        Body(20, "O社", "栄養ドリンク"),
+        Header(21, "スーパーG"),
+        Body(22, "P社", "ブレスケア"),
+        Body(23, "Q社", "煎餅"),
+        Body(24, "R社", "アイスクリーム"),
+        Header(25, "スーパーH"),
+        Body(26, "S社", "昆布おにぎり"),
+        Body(27, "T社", "ビール")
 
     )
 
@@ -49,7 +49,7 @@ class RepositoryImpl : Repository {
         return Body(id, maker, commodity)
     }
 
-    override fun getMain(): List<ViewType> {
+    override fun getMain(): List<Item> {
         return list
     }
 
